@@ -17,7 +17,7 @@ def determine_score(score):
     elif score>=65:
         return "Credit"
     elif score>=50:
-        return "P"
+        return "Pass"
     else:
         return "Fail"
 main()
