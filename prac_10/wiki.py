@@ -1,15 +1,15 @@
 import wikipedia
 
-word = input("Enter page title or search phrase: ")
-while word != "":
+word = input("Enter a page title or phrase: ")
+while word != '':
     try:
-        print(wikipedia.summary(word))
+        page = wikipedia.page(word, auto_suggest=False)
+        print(page.title)
+        print(page.summary)
+        word = input("Enter a page title or phrase: ")
     except wikipedia.exceptions.DisambiguationError as e:
-        print(e.options)
-
-    page = wikipedia.page(word, auto_suggest=False)
-    print(page.word)
-    print(page.summary)
-    print(page.url)
-
-    word = input("Enter page title or search phrase: ")
+        print(e)
+        word = input("Enter a page title or phrase: ")
+    except wikipedia.exceptions.PageError as a:
+        print(a)
+        word = input("Enter a page title or phrase: ")
